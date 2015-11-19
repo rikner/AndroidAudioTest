@@ -4,6 +4,8 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.util.Log;
+import android.os.Handler;
+import android.os.Message;
 
 import com.flowkey.flowaudiolab.R;
 import com.flowkey.flowaudiolab.VolumeMeter.VolumeBar;
@@ -11,7 +13,7 @@ import com.flowkey.flowaudiolab.VolumeMeter.VolumeBar;
 /**
  * Created by erik on 13.11.15.
  */
-public class AudioEngine/* extends Thread */{
+public class AudioEngine /* extends Thread */ {
 
     private static final String TAG = "AudioEngine";
 
@@ -24,15 +26,12 @@ public class AudioEngine/* extends Thread */{
 
     private double currentRMS = 0;
 
-    public double getCurrentRMS() {
-        return currentRMS;
-    }
 
-    private VolumeBar volumeBar;
+    private Handler handler;
 
     private AudioRecord recorder;
 
-    public AudioEngine(VolumeBar volumeBar) {
+    public AudioEngine(Handler handler) {
 
         this.AUDIO_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
         this.CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
@@ -48,8 +47,7 @@ public class AudioEngine/* extends Thread */{
 
         this.initRecorder();
 
-
-        this.volumeBar = volumeBar;
+        this.handler = handler;
 
     }
 
@@ -73,8 +71,7 @@ public class AudioEngine/* extends Thread */{
 
 //    @Override
 //    public void run(){
-//        recorder.startRecording();
-//        while (isRecording()) {
+//        if (isRecording()) {
 //            dspCallback();
 //        }
 //    }
@@ -86,9 +83,10 @@ public class AudioEngine/* extends Thread */{
     private void dspCallback(){
         recorder.read(audioBuffer, 0, BUFFER_SIZE);
         currentRMS = calculateRMS(audioBuffer);
-        Log.d(TAG, Double.toString(currentRMS));
-        volumeBar.setVolume((float)currentRMS);
-                volumeBar.invalidate();
+        // Log.d(TAG, Double.toString(currentRMS));
+
+        Message volumeMsg = handler.obtainMessage(0, (int)Math.round(currentRMS), 0);
+        handler.sendMessage(volumeMsg);
     }
 
     public void startRunning(){
@@ -101,24 +99,11 @@ public class AudioEngine/* extends Thread */{
         Log.d(TAG, "stopped running, state: " + Integer.toString(this.recorder.getRecordingState()));
     }
 
-/*    private void publishProgress(int randNum) {
-        Log.v(TAG, "reporting back from the Random Number Thread");
-        final String text = String.format(getString(R.string.service_msg), randNum);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                updateResults(text);
-            }
-        });
-    }*/
-
-
-
     //implement interface: AudioRecord.OnRecordPositionUpdateListener
     private AudioRecord.OnRecordPositionUpdateListener updateListener = new AudioRecord.OnRecordPositionUpdateListener() {
 
         public void onPeriodicNotification(AudioRecord recorder) {
-            dspCallback();
+            dspCallback(); //start new thread
         }
 
         public void onMarkerReached(AudioRecord recorder) {

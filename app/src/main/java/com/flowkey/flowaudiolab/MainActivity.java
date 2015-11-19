@@ -1,7 +1,8 @@
 package com.flowkey.flowaudiolab;
 
 import android.os.Bundle;
-import android.os.Looper;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.util.Log;
 import android.widget.Button;
 import com.flowkey.flowaudiolab.AudioEngine.AudioEngine;
 import com.flowkey.flowaudiolab.VolumeMeter.VolumeBar;
-
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,14 +20,24 @@ public class MainActivity extends AppCompatActivity {
 
     Button startButton = null;
     Button stopButton = null;
+    VolumeBar volumeBar = null;
 
     private AudioEngine audioEngine = null;
+
+    // private native void NativeAudioEngine();
+
+    Handler audioHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            volumeBar.updateVolume(msg.arg1);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
-        audioEngine = new AudioEngine((VolumeBar)findViewById(R.id.volumeBar));
+        audioEngine = new AudioEngine(audioHandler);
     }
 
     @Override
@@ -87,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 audioEngine.stopRunning();
             }
         });
+
+        volumeBar = (VolumeBar) findViewById(R.id.volumeBar);
     }
 
 
