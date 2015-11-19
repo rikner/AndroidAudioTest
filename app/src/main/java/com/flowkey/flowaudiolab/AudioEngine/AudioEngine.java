@@ -25,7 +25,7 @@ public class AudioEngine /* extends Thread */ {
     private short[] audioBuffer;
 
     private double currentRMS = 0;
-
+    private double currentDecibel = 0;
 
     private Handler handler;
 
@@ -83,7 +83,8 @@ public class AudioEngine /* extends Thread */ {
     private void dspCallback(){
         recorder.read(audioBuffer, 0, BUFFER_SIZE);
         currentRMS = calculateRMS(audioBuffer);
-        // Log.d(TAG, Double.toString(currentRMS));
+        //currentDecibel = linearToDecibel(currentRMS);
+        //Log.d(TAG, "currentDecibel: " + Double.toString(currentRMS));
 
         Message volumeMsg = handler.obtainMessage(0, (int)Math.round(currentRMS), 0);
         handler.sendMessage(volumeMsg);
@@ -114,9 +115,13 @@ public class AudioEngine /* extends Thread */ {
     private double calculateRMS(short[] numbers){
         double t = 0;
         for (int i = 0; i < numbers.length; i++) {
-            t = t + Math.pow(numbers[i],2);
+            t += Math.pow(numbers[i],2);
         }
-        return Math.sqrt(t / BUFFER_SIZE);
+        return Math.sqrt(t / numbers.length);
+    }
+
+    private double linearToDecibel(double value) {
+        return 20*Math.log10(value);
     }
 }
 

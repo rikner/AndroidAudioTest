@@ -1,6 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 SUPERPOWERED_PATH := Superpowered
 
+
 include $(CLEAR_VARS)
 LOCAL_MODULE := Superpowered
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
@@ -18,13 +19,14 @@ else
 endif
 include $(PREBUILT_STATIC_LIBRARY)
 
+
 include $(CLEAR_VARS)  
 LOCAL_MODULE := NativeAudioEngine
-
 LOCAL_SRC_FILES := \
     NativeAudioEngine.cpp \
     $(SUPERPOWERED_PATH)/SuperpoweredAndroidAudioIO.cpp
 LOCAL_C_INCLUDES += $(SUPERPOWERED_PATH)
+
 
 LOCAL_LDLIBS := -llog -landroid -lOpenSLES 
 LOCAL_STATIC_LIBRARIES := Superpowered

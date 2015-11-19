@@ -1,11 +1,10 @@
 /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/obj/local/arm64-v8a/objs/NativeAudioEngine/NativeAudioEngine.o: \
   /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.cpp \
-  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h \
-  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/jni.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/sys/cdefs.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/sys/cdefs_elf.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/android/api-level.h \
+  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/stdlib.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/string.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/malloc.h \
@@ -31,10 +30,6 @@
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/stdio.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/android/log.h
 
-/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h:
-
-/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h:
-
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/jni.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/sys/cdefs.h:
@@ -42,6 +37,8 @@
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/sys/cdefs_elf.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/android/api-level.h:
+
+/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/include/stdlib.h:
 

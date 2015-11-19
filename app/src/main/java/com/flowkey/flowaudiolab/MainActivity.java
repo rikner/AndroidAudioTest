@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AudioEngine audioEngine = null;
 
-    // private native void NativeAudioEngine();
+    private native void NativeAudioEngine(long samplerate, long buffersize);
 
     Handler audioHandler = new Handler() {
         @Override
@@ -37,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
+
         audioEngine = new AudioEngine(audioHandler);
+
+        System.loadLibrary("NativeAudioEngine");
+        long sampleRate = 44100;
+        long bufferSize = 1024;
+        NativeAudioEngine(sampleRate, bufferSize);
     }
 
     @Override
