@@ -27,8 +27,9 @@ public class VolumeBar extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.BLUE);
         paint.setStrokeWidth(1);
+        // float normalizedVolume = volume / (float)canvas.getHeight();
         canvas.drawRect(canvas.getWidth() / 2 - width, canvas.getHeight() - volume, canvas.getWidth() / 2 + width, canvas.getHeight() + volume, paint);
 
 

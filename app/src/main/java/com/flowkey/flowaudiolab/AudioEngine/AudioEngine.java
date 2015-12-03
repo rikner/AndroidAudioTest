@@ -83,8 +83,8 @@ public class AudioEngine /* extends Thread */ {
     private void dspCallback(){
         recorder.read(audioBuffer, 0, BUFFER_SIZE);
         currentRMS = calculateRMS(audioBuffer);
-        //currentDecibel = linearToDecibel(currentRMS);
-        //Log.d(TAG, "currentDecibel: " + Double.toString(currentRMS));
+        currentDecibel = linearToDecibel(currentRMS);
+        // Log.d(TAG, "currentDecibel: " + Double.toString(currentDecibel));
 
         Message volumeMsg = handler.obtainMessage(0, (int)Math.round(currentRMS), 0);
         handler.sendMessage(volumeMsg);
@@ -92,12 +92,12 @@ public class AudioEngine /* extends Thread */ {
 
     public void startRunning(){
         this.recorder.startRecording();
-        Log.d(TAG, "started running, state: " + Integer.toString(this.recorder.getRecordingState()));
+        Log.d(TAG, "AudioEngine started running, state: " + Integer.toString(this.recorder.getRecordingState()));
     }
 
     public void stopRunning(){
         this.recorder.stop();
-        Log.d(TAG, "stopped running, state: " + Integer.toString(this.recorder.getRecordingState()));
+        Log.d(TAG, "AudioEngine stopped running, state: " + Integer.toString(this.recorder.getRecordingState()));
     }
 
     //implement interface: AudioRecord.OnRecordPositionUpdateListener
@@ -121,7 +121,7 @@ public class AudioEngine /* extends Thread */ {
     }
 
     private double linearToDecibel(double value) {
-        return 20*Math.log10(value);
+        return 20*Math.log10(value/(double)Short.MAX_VALUE);
     }
 }
 

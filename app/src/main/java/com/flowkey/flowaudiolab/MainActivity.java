@@ -16,13 +16,17 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    static {
+        System.loadLibrary("NativeAudioEngine"); // Load native library at runtime
+    }
+
     private static final String TAG = "MainActivity";
 
     Button startButton = null;
     Button stopButton = null;
     VolumeBar volumeBar = null;
 
-    private AudioEngine audioEngine = null;
+    // private AudioEngine audioEngine = null;
 
     private native void NativeAudioEngine(long samplerate, long buffersize);
 
@@ -33,17 +37,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void callbackFromNative(double rms){
+        Log.d(TAG, "native code executing callback with RMS: " + Double.toString(rms));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
+        // audioEngine = new AudioEngine(audioHandler);
 
-        audioEngine = new AudioEngine(audioHandler);
-
-        System.loadLibrary("NativeAudioEngine");
-        long sampleRate = 44100;
-        long bufferSize = 1024;
-        NativeAudioEngine(sampleRate, bufferSize);
     }
 
     @Override
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        audioEngine.stopRunning();
+        // audioEngine.stopRunning();
         Log.d(TAG, "App stopping,");
     }
 
@@ -90,8 +93,13 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "start Recording");
-                audioEngine.startRunning();
+                // audioEngine.startRunning();
+
+                long sampleRate = 44100;
+                long bufferSize = 1024;
+
+                Log.d(TAG, "About to execute Native Audio Engine");
+                NativeAudioEngine(sampleRate, bufferSize);
             }
         });
 
@@ -99,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
         stopButton = (Button) findViewById(R.id.stop);
         stopButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Log.d(TAG, "stop Recording");
-                audioEngine.stopRunning();
+
+                // audioEngine.stopRunning();
             }
         });
 
