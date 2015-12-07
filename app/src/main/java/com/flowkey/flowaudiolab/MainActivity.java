@@ -29,16 +29,20 @@ public class MainActivity extends AppCompatActivity {
     // private AudioEngine audioEngine = null;
 
     private native void NativeAudioEngine(long samplerate, long buffersize);
+    private native void startNativeAudioEngine();
+    private native void stopNativeAudioEngine();
 
     Handler audioHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            volumeBar.updateVolume(msg.arg1);
+            volumeBar.updateVolume((float) msg.arg1);
         }
     };
 
-    private void callbackFromNative(double rms){
-        Log.d(TAG, "native code executing callback with RMS: " + Double.toString(rms));
+    private void callbackFromNative(float volume){
+        Log.d(TAG, "native code executing callback with volume: " + Float.toString(volume));
+        Message volumeMsg = audioHandler.obtainMessage(0, (int)Math.round(volume), 0);
+        audioHandler.sendMessage(volumeMsg);
     }
 
     @Override
@@ -100,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(TAG, "About to execute Native Audio Engine");
                 NativeAudioEngine(sampleRate, bufferSize);
+
+                startNativeAudioEngine();
             }
         });
 
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         stopButton = (Button) findViewById(R.id.stop);
         stopButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                stopNativeAudioEngine();
                 // audioEngine.stopRunning();
             }
         });

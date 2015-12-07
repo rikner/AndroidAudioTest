@@ -1,10 +1,15 @@
 /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/obj/local/x86_64/objs/NativeAudioEngine/NativeAudioEngine.o: \
   /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.cpp \
+  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/jni.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/cdefs.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/cdefs_elf.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/api-level.h \
   /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h \
+  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredSimple.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES_Platform.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES_AndroidConfiguration.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/stdlib.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/string.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/malloc.h \
@@ -29,8 +34,14 @@
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/sysmacros.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/memory.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/stdio.h \
-  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/log.h \
-  /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/math.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/limits.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/limits.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/linux/limits.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/syslimits.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/log.h
+
+/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/jni.h:
 
@@ -41,6 +52,14 @@
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/api-level.h:
 
 /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredAndroidAudioIO.h:
+
+/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/Superpowered/SuperpoweredSimple.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES_Platform.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/SLES/OpenSLES_AndroidConfiguration.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/stdlib.h:
 
@@ -90,6 +109,14 @@
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/stdio.h:
 
-/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/log.h:
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/math.h:
 
-/Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h:
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/limits.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/limits.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/linux/limits.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/sys/syslimits.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-21/arch-x86_64/usr/include/android/log.h:

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -13,13 +14,13 @@ import android.view.View;
  */
 public class VolumeBar extends View {
 
+    private static final String TAG = "VolumeBar";
+
     Paint paint = new Paint();
 
     private float volume = 20;
 
     int width = 100;
-    int height = 100;
-
 
     public VolumeBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -30,7 +31,11 @@ public class VolumeBar extends View {
         paint.setColor(Color.BLUE);
         paint.setStrokeWidth(1);
         // float normalizedVolume = volume / (float)canvas.getHeight();
-        canvas.drawRect(canvas.getWidth() / 2 - width, canvas.getHeight() - volume, canvas.getWidth() / 2 + width, canvas.getHeight() + volume, paint);
+        float left = canvas.getWidth() / 2 - width;
+        float top = canvas.getHeight() - volume;
+        float right = canvas.getWidth() / 2 + width;
+        float bottom = canvas.getHeight() + volume;
+        canvas.drawRect(left, top, right, bottom, paint);
 
 
   /*      paint.setStrokeWidth(0);
@@ -41,7 +46,8 @@ public class VolumeBar extends View {
     }
 
     public void updateVolume(float volume) {
-        this.volume = volume;
+        Log.d(TAG, "native code executing callback with volume: " + Float.toString(volume));
+        this.volume = 100 - volume;
         this.invalidate();
     }
 

@@ -11,12 +11,17 @@
 //
 // Created by flowing erik on 18.11.15.
 //
+
 #include <jni.h>
 #include "Superpowered/SuperpoweredAndroidAudioIO.h"
+#include "Superpowered/SuperpoweredSimple.h"
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_AndroidConfiguration.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include <android/log.h>
-#include <android/log.h>
+#include <limits.h>
 
 
 // static SuperpoweredAndroidAudioIO *audioIO;
@@ -26,8 +31,12 @@ static bool audioProcessing(void *clientdata, short int *audioInputOutput, int n
 
 extern "C" {
     void Java_com_flowkey_flowaudiolab_MainActivity_NativeAudioEngine(JNIEnv *env, jobject self, jlong samplerate, jlong buffersize);
+    JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_startNativeAudioEngine(JNIEnv *env, jobject self);
+    JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_stopNativeAudioEngine(JNIEnv *env, jobject self);
 }
 
 JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_NativeAudioEngine(JNIEnv *env, jobject self, jlong samplerate, jlong buffersize);
+JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_startNativeAudioEngine(JNIEnv *env, jobject self);
+JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_stopNativeAudioEngine(JNIEnv *env, jobject self);
 
-static double calculateRMS(float *input, int numberOfSamples);
+static float calculateRMS(float *audioFrame, int size);

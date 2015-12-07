@@ -5,6 +5,7 @@
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Platform.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Android.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_AndroidConfiguration.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/pthread.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/time.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
@@ -61,6 +62,8 @@ Superpowered/SuperpoweredAndroidAudioIO.h:
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Platform.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_Android.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/SLES/OpenSLES_AndroidConfiguration.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-arm/usr/include/pthread.h:
 
