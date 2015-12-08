@@ -20,7 +20,7 @@ jclass main_activity;
 jobject thiz;
 JavaVM* vm;
 
-static float calculateRMS(float *audioFrame, int size) {
+float calculateRMS(float *audioFrame, int size) {
     float total = 0.0f;
     for (int i=0; i<size; i++) {
         total += audioFrame[i] * audioFrame[i];
@@ -28,16 +28,22 @@ static float calculateRMS(float *audioFrame, int size) {
     return sqrt(total / size);
 }
 
-//static float calculateRMS(short int *audioFrame, int size){
-//    float total = 0.0f;
-//    for (int i=0; i<size; i++) {
-//        total += (float)(audioFrame[i] * audioFrame[i]);
-//    }
-//    return sqrt(total / size);
-//}
+float calculateRMS(short int *audioFrame, int size){
+    float total = 0.0f;
+    for (int i=0; i<size; i++) {
+        total += (float)(audioFrame[i] * audioFrame[i]);
+    }
+    return sqrt(total / size);
+}
 
-static float linearToDecbiel(float linearValue){
-    return 20*log10(linearValue /*/ 32767*/);
+float linearToDecibel(float value, float ref){
+    return 20*log10(value / ref);
+}
+
+
+float decibelToPercentage(float decibel){
+    float value = 1 - (decibel / -72);
+    return fmax(0.1f, value) * 100;
 }
 
 static bool audioProcessing(void *clientdata, short int *audioInputOutput, int numberOfSamples, int samplerate) {
@@ -48,9 +54,9 @@ static bool audioProcessing(void *clientdata, short int *audioInputOutput, int n
     SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
 
     // calculate root mean square
-    float volume = linearToDecbiel(calculateRMS(inputBufferFloat, numberOfSamples));
+    float volume = decibelToPercentage(linearToDecibel(calculateRMS(inputBufferFloat, numberOfSamples), 1));
 
-    LOGI("audioProcessing , volume: %f", volume);
+    // LOGI("audioProcessing , volume: %f", volume);
 
     jenv->CallVoidMethod(thiz, java_callback, volume);
 
@@ -63,7 +69,7 @@ extern "C" {
 
 JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_NativeAudioEngine(JNIEnv *env, jobject self, jlong samplerate, jlong buffersize) {
 
-    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, true, audioProcessing, NULL, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
+    audioIO = new SuperpoweredAndroidAudioIO(samplerate, buffersize, true, false, audioProcessing, NULL, SL_ANDROID_STREAM_MEDIA, buffersize * 2); // Start audio input/output.
     inputBufferFloat = (float *)malloc(buffersize * sizeof(float) * 2 + 128);
 
     //catch jni environment for later use

@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     VolumeBar volumeBar = null;
 
     // private AudioEngine audioEngine = null;
-
     private native void NativeAudioEngine(long samplerate, long buffersize);
+
     private native void startNativeAudioEngine();
     private native void stopNativeAudioEngine();
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void callbackFromNative(float volume){
-        Log.d(TAG, "native code executing callback with volume: " + Float.toString(volume));
+        // Log.d(TAG, "native code executing callback with volume: " + Float.toString(volume));
         Message volumeMsg = audioHandler.obtainMessage(0, (int)Math.round(volume), 0);
         audioHandler.sendMessage(volumeMsg);
     }

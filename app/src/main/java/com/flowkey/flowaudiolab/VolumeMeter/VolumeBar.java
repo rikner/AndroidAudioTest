@@ -30,24 +30,23 @@ public class VolumeBar extends View {
     public void onDraw(Canvas canvas) {
         paint.setColor(Color.BLUE);
         paint.setStrokeWidth(1);
-        // float normalizedVolume = volume / (float)canvas.getHeight();
+
+        float normalizedVolume = this.volume / canvas.getHeight();
+
+        // canvas.drawRect(canvas.getWidth() / 2 - width, canvas.getHeight() - volume, canvas.getWidth() / 2 + width, canvas.getHeight() + volume, paint);
+
         float left = canvas.getWidth() / 2 - width;
-        float top = canvas.getHeight() - volume;
+        float top = canvas.getHeight() / 2 - volume;
         float right = canvas.getWidth() / 2 + width;
-        float bottom = canvas.getHeight() + volume;
+        float bottom = canvas.getHeight() / 2 + volume;
         canvas.drawRect(left, top, right, bottom, paint);
 
-
-  /*      paint.setStrokeWidth(0);
-        paint.setColor(Color.CYAN);
-        canvas.drawRect(33, 60, 77, 77, paint );
-        paint.setColor(Color.YELLOW);
-        canvas.drawRect(33, 33, 77, 60, paint );*/
     }
 
-    public void updateVolume(float volume) {
-        Log.d(TAG, "native code executing callback with volume: " + Float.toString(volume));
-        this.volume = 100 - volume;
+    public void updateVolume(float volumePercentage) {
+
+        this.volume = volumePercentage;
+        Log.d(TAG, "incoming volume: " + Float.toString(this.volume));
         this.invalidate();
     }
 
