@@ -8,12 +8,9 @@
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 static SuperpoweredAndroidAudioIO *audioIO;
-static float frequencies[3] = {100, 1000, 10000};
-static float widths[3] = {100, 100, 100};
-static float *inputBufferFloat;
-float peak = 0;
-float sum = 0;
+float *inputBufferFloat;
 
+// JNI related stuff
 JNIEnv *jenv;
 jmethodID java_callback;
 jclass main_activity;
@@ -49,10 +46,12 @@ float decibelToPercentage(float decibel){
 static bool audioProcessing(void *clientdata, short int *audioInputOutput, int numberOfSamples, int samplerate) {
 
     vm->AttachCurrentThread(&jenv, 0);
-    
+
+    // convert to float with superpowered and calculate volume
     // SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
     // float volume = decibelToPercentage(linearToDecibel(calculateRMS(inputBufferFloat, numberOfSamples), 1));
 
+    // calculate volume from short int buffer
     float volume = decibelToPercentage(linearToDecibel(calculateRMS(audioInputOutput, numberOfSamples), SHRT_MAX));
 
     // LOGI("audioProcessing , volume: %f", volume);

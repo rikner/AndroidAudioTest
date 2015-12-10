@@ -23,12 +23,6 @@
 #include <android/log.h>
 #include <climits>
 
-
-// static SuperpoweredAndroidAudioIO *audioIO;
-// static float *inputBufferFloat;
-
-static bool audioProcessing(void *clientdata, short int *audioInputOutput, int numberOfSamples, int samplerate);
-
 extern "C" {
     void Java_com_flowkey_flowaudiolab_MainActivity_NativeAudioEngine(JNIEnv *env, jobject self, jlong samplerate, jlong buffersize);
     JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_startNativeAudioEngine(JNIEnv *env, jobject self);
@@ -38,5 +32,3 @@ extern "C" {
 JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_NativeAudioEngine(JNIEnv *env, jobject self, jlong samplerate, jlong buffersize);
 JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_startNativeAudioEngine(JNIEnv *env, jobject self);
 JNIEXPORT void Java_com_flowkey_flowaudiolab_MainActivity_stopNativeAudioEngine(JNIEnv *env, jobject self);
-
-static float calculateRMS(float *audioFrame, int size);
