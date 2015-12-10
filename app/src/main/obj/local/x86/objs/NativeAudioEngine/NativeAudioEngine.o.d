@@ -39,7 +39,8 @@
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/sys/syslimits.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/asm/page.h \
   /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/asm/page_32.h \
-  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/android/log.h
+  /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/android/log.h \
+  /Users/erik/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/climits
 
 /Users/erik/flowDev/androidDev/FlowAudioLab/app/src/main/jni/NativeAudioEngine.h:
 
@@ -120,3 +121,5 @@
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/asm/page_32.h:
 
 /Users/erik/Library/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/android/log.h:
+
+/Users/erik/Library/Android/sdk/ndk-bundle/sources/cxx-stl/system/include/climits:

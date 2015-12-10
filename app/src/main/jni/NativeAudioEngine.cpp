@@ -49,12 +49,11 @@ float decibelToPercentage(float decibel){
 static bool audioProcessing(void *clientdata, short int *audioInputOutput, int numberOfSamples, int samplerate) {
 
     vm->AttachCurrentThread(&jenv, 0);
+    
+    // SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
+    // float volume = decibelToPercentage(linearToDecibel(calculateRMS(inputBufferFloat, numberOfSamples), 1));
 
-    // convert ints to floats
-    SuperpoweredShortIntToFloat(audioInputOutput, inputBufferFloat, numberOfSamples); // Converting the 16-bit integer samples to 32-bit floating point.
-
-    // calculate root mean square
-    float volume = decibelToPercentage(linearToDecibel(calculateRMS(inputBufferFloat, numberOfSamples), 1));
+    float volume = decibelToPercentage(linearToDecibel(calculateRMS(audioInputOutput, numberOfSamples), SHRT_MAX));
 
     // LOGI("audioProcessing , volume: %f", volume);
 

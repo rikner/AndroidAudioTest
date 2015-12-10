@@ -46,7 +46,7 @@ public class VolumeBar extends View {
     public void updateVolume(float volumePercentage) {
 
         this.volume = volumePercentage;
-        Log.d(TAG, "incoming volume: " + Float.toString(this.volume));
+        // Log.d(TAG, "incoming volume: " + Float.toString(this.volume));
         this.invalidate();
     }
 

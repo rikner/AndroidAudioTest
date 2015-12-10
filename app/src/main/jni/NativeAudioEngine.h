@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <android/log.h>
-#include <limits.h>
+#include <climits>
 
 
 // static SuperpoweredAndroidAudioIO *audioIO;

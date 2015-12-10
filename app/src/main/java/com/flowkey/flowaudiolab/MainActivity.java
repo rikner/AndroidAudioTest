@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button stopButton = null;
     VolumeBar volumeBar = null;
 
-    // private AudioEngine audioEngine = null;
+    private AudioEngine audioEngine = null;
     private native void NativeAudioEngine(long samplerate, long buffersize);
 
     private native void startNativeAudioEngine();
@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(TAG, "About to execute Native Audio Engine");
                 NativeAudioEngine(sampleRate, bufferSize);
-
                 startNativeAudioEngine();
             }
         });
